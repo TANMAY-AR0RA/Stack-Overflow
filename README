@@ -1,0 +1,14 @@
+# use the following command line to compile the codes
+
+# Explanation of compling flags:
+# the flag "-fno-stack-protector" is used to disable "stackGuard" protection.
+# the flag "-z execstack" is used to disable "non-executable stack" default protection.
+#            so that the shellcode in stack memory can be executed.
+# the flag "-ggdb" is to enclude source code in the generated executable code 
+#            to faciliate debugger. 
+# the flag "-m32" is to tell gcc to compile in 32-bit mode. We use 32-bit mode
+#            because our shellcode[] can only run successfully using 32-bit mode
+
+gcc -ggdb -fno-stack-protector -z execstack -o exploit exploit.c
+
+gcc -ggdb -fno-stack-protector -z execstack -m32 -o testshellcode testshellcode.c
